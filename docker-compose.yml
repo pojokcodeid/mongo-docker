@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: asep
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+    #   - ./db-data:/data/db
+      - ./backup:/backup
+    ports:
+      - 27017:27017

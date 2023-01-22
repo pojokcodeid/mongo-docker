@@ -1,0 +1,10 @@
+docker-compose up 
+docker-compose up -d
+docker exec -it  mongodockerdata-mongodb-1 bash 
+mongodump --username asep --password password --out=/backup/
+mongodump --username=asep --db=inventory --password=password --authenticationDatabase=admin --out=/backup/
+
+docker-compose down --volume
+docker-compose up
+docker exec -it  mongodockerdata-mongodb-1 bash
+mongorestore --username asep --password password /backup/inventory/*.bson
